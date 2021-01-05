@@ -1,4 +1,5 @@
 import TextNowrap from './text-nowrap'
+import TextNowrapObserver from './text-nowrap-observer'
 
 document.addEventListener('DOMContentLoaded', ()=>{
 
@@ -18,6 +19,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
       lines: 2
     })
   }
+
+  TextNowrapObserver.bind('.test')
 
 })
 
