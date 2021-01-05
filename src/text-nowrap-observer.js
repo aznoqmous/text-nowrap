@@ -20,13 +20,15 @@ export default class TextNowrapObserver {
 
     TextNowrapObserver.bind(selector, element, options)
 
-    (new MutationObserver((mutations)=>{
+    let observer = new MutationObserver((mutations)=>{
       for(let mutation of mutations) {
         if(mutation.type == 'childList') {
           TextNowrapObserver.bind(selector, mutation.target, options)
         }
       }
-    })).observe(element, {
+    })
+
+    observer.observe(element, {
       childList: true, subtree: true
     })
   }
