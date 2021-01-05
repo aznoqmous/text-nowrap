@@ -18,12 +18,12 @@ export default class TextNowrapObserver {
     if(!element) element = document.body
     if(!element) return;
 
-    this.bind(selector, element)
+    TextNowrapObserver.bind(selector, element)
 
     (new MutationObserver((mutations)=>{
       for(let mutation of mutations) {
         if(mutation.type == 'childList') {
-          this.bind(selector, mutation.target)
+          TextNowrapObserver.bind(selector, mutation.target)
         }
       }
     })).observe(element, {
