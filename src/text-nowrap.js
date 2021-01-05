@@ -18,7 +18,7 @@ export default class TextNowrap {
     }
 
     resize(){
-      while(this.isMultiline()){
+      while(this.isMultiline() && this.currentFontSize > 1){
         this.currentFontSize--
         this.applyFontSize()
       }
