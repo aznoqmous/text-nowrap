@@ -4,26 +4,26 @@ export default class TextNowrapObserver {
   /**
    * Bind all element.querySelectorAll(selector)
    */
-  static bind(selector, element=null){
+  static bind(selector, element=null, options={}){
     if(!element) element = document.body
     if(!element) return;
     let targets = [...element.querySelectorAll(selector)]
-    if(targets.length) targets.map(t => new TextNowrap(t))
+    if(targets.length) targets.map(t => new TextNowrap(t, options))
   }
 
   /**
    * Observe given element and bind when updated
    */
-  static observe(selector, element=null){
+  static observe(selector, element=null, options={}){
     if(!element) element = document.body
     if(!element) return;
 
-    TextNowrapObserver.bind(selector, element)
+    TextNowrapObserver.bind(selector, element, options)
 
     (new MutationObserver((mutations)=>{
       for(let mutation of mutations) {
         if(mutation.type == 'childList') {
-          TextNowrapObserver.bind(selector, mutation.target)
+          TextNowrapObserver.bind(selector, mutation.target, options)
         }
       }
     })).observe(element, {
